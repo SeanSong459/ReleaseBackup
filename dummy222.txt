@@ -1,1 +1,9 @@
-dummy2222
+#!/bin/bash
+
+# Get the target branch (the branch being rebased onto)
+target_branch="$1"
+
+if [ "$target_branch" = "main" ]; then
+    echo "Skipping rebase onto main branch"
+    exit 1
+fi
