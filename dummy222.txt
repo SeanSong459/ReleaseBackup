@@ -1,9 +1,17 @@
 #!/bin/bash
 
+branch="$2"
+[ -n "$branch" ] || branch=`git rev-parse --abbrev-ref HEAD`
+
+if [ "$branch" = "main" ]; then
+    echo "you are in main branch, Skipping rebase for main branch"
+    exit 1
+fi
+
 # Get the target branch (the branch being rebased onto)
 target_branch="$1"
 
 if [ "$target_branch" = "main" ]; then
-    echo "Skipping rebase onto main branch"
+    echo "you are in other branch,Skipping rebase onto main branch"
     exit 1
 fi
